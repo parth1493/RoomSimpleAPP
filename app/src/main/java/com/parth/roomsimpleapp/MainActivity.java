@@ -150,10 +150,4 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
         }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        load();
-    }
 }

@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_margin="20dp"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:textStyle="bold"
-        android:textSize="24dp"
-        android:id="@+id/studentName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"/>
-
-    <TextView
-
-        android:textSize="24dp"
-        android:id="@+id/studentEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"/>
+    <data>
+        <variable
+            name="student"
+            type="com.parth.roomsimpleapp.db.entity.Student"/>
+    </data>
 
     <LinearLayout
-        android:weightSum="1"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_weight="0.5"
             android:textStyle="bold"
-            android:textSize="18dp"
-            android:id="@+id/countryName"
+            android:textSize="24dp"
+            android:id="@+id/studentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello"/>
+            android:text="@{student.name}" />
 
         <TextView
-            android:layout_weight="0.5"
-            android:textSize="18dp"
-            android:id="@+id/date"
+
+            android:textSize="24dp"
+            android:id="@+id/studentEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello"/>
+            android:text="@{student.email}" />
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="0.5"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:id="@+id/countryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{student.country}" />
+
+            <TextView
+                android:layout_weight="0.5"
+                android:textSize="18dp"
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{student.date}" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#000" />
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#000"/>
-</LinearLayout>
+</layout>

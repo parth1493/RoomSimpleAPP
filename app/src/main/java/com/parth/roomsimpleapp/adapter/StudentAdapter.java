@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.parth.roomsimpleapp.MainActivity;
 import com.parth.roomsimpleapp.R;
+import com.parth.roomsimpleapp.databinding.LayoutListBinding;
 import com.parth.roomsimpleapp.db.entity.Student;
 
 import java.util.ArrayList;
@@ -24,17 +26,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView name;
-        public TextView emil;
-        public TextView country;
-        public TextView date;
+       private LayoutListBinding mLayoutListBinding;
 
-        public MyViewHolder(View view) {
-            super(view);
-            name = view.findViewById(R.id.studentName);
-            emil = view.findViewById(R.id.studentEmail);
-            country = view.findViewById(R.id.countryName);
-            date = view.findViewById(R.id.date);
+        public MyViewHolder(LayoutListBinding layoutListBinding) {
+            super(layoutListBinding.getRoot());
+
+            this.mLayoutListBinding = layoutListBinding;
         }
     }
 
@@ -47,10 +44,13 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list, parent, false);
 
-        return new MyViewHolder(itemView);
+        //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list, parent, false);
 
+      //  return new MyViewHolder(itemView);
+        LayoutListBinding layoutListBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.layout_list, parent, false);
+            return new MyViewHolder(layoutListBinding);
     }
 
     @Override
@@ -59,10 +59,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 
         final Student student = studentsList.get(position);
 
-        holder.name.setText(student.getName());
-        holder.emil.setText(student.getEmail());
-        holder.country.setText(student.getCountry());
-        holder.date.setText(student.getDate());
+        holder.mLayoutListBinding.setStudent(student);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
 

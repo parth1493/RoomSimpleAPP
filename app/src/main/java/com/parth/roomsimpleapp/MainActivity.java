@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mMinActivityEventHandlerDatabinding = new MainActivityEventHandlerDatabinding(this);
         mActivityMainBinding.setFibButtonClick(mMinActivityEventHandlerDatabinding);
 
-        recyclerView = findViewById(R.id.recycler_view_contacts);
+        recyclerView = mActivityMainBinding.layoutRecycle.recyclerViewContacts;
 
         myAppDatabase = Room.databaseBuilder(getApplicationContext(), StudentApplicationDb.class, "StudentDB").build();
 

@@ -42,6 +42,7 @@ public class AddStudent extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         value = b.getBoolean("isUpdate");
         student = new Student();
+
         myAppDatabase = Room.databaseBuilder(getApplicationContext(),StudentApplicationDb.class,"StudentDB").build();
 
         mActivityAddStudentBinding = DataBindingUtil.setContentView(this,R.layout.activity_add_student);
